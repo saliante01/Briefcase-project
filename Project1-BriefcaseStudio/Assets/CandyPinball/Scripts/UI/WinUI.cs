@@ -55,16 +55,16 @@ namespace JSG.Project_Pinball.UI
         }
         private void LoadNextScene()
         {
-
+            // Genera un índice aleatorio entre 0 y 4
+            int randomSceneIndex = Random.Range(0, 3);
             m_DataStorage.LevelNumber++;
-            if (m_DataStorage.LevelNumber > 30)
-            {
-                m_DataStorage.LevelNumber = 2;
-            }
-            m_DataStorage.SaveData();
 
-            SceneManager.LoadScene(m_DataStorage.LevelNumber + 1);
+            m_DataStorage.SaveData();
+            // Carga la escena correspondiente sin modificar el LevelNumber
+            SceneManager.LoadScene(randomSceneIndex + 1);  // Se suma 1 porque la escena es indexada de 1 en adelante (por ejemplo: "Scene 1", "Scene 2")
         }
+
+
         public void Restart()
         {
             foreach (ParticleSystem p in m_Particles)

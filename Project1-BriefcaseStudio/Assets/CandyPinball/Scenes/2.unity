@@ -1687,6 +1687,8 @@ MonoBehaviour:
   m_Particles:
   - {fileID: 3424400880940431649}
   - {fileID: 7358535550260836588}
+  m_DataStorage: {fileID: 11400000, guid: 4c94454eb9ace764491d4bb18e6e62fe, type: 2}
+  velocidadRotacion: 0
 --- !u!1 &2057729913
 GameObject:
   m_ObjectHideFlags: 0

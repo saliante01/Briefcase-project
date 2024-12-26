@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using JSG.Project_Pinball.ScriptableObjects;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace JSG.Project_Pinball.Gameplay
 {
     public class Pusher : MonoBehaviour
@@ -8,41 +10,71 @@ namespace JSG.Project_Pinball.Gameplay
         public GameObject m_Ball;
         bool haveBall = true;
         public Transform ArrowBase;
-        
+
         public Transform BallPoint;
 
         public static Pusher m_Current;
 
         public GameObject m_ShootParticlePrefab;
         public ParticleSystem[] m_Particles;
+        [SerializeField, Space]
+        private DataStorage m_DataStorage;
 
-        void Awake()
-        {
-            m_Current = this;
-        }
+        public float velocidadRotacion;  // Controla la velocidad de la rotación
+
         // Start is called before the first frame update
         void Start()
         {
+            if (m_DataStorage == null)
+            {
+                Debug.LogError("m_DataStorage no está asignado.");
+                return;
+            }
+
             m_Particles[0].Stop();
             m_Particles[1].Stop();
+            Debug.Log(m_DataStorage.LevelNumber);  // Deberías ver esto si m_DataStorage no es null
+
+            // Ajustar la velocidad de rotación según el valor de nextlevel
+            switch (m_DataStorage.LevelNumber)
+            {
+                case 0:
+                    velocidadRotacion = 1.5f;  // Nivel 1, velocidad 1
+                    break;
+                case 1:
+                    velocidadRotacion = 3f;  // Nivel 2, velocidad 2
+                    break;
+                case 2:
+                    velocidadRotacion = 4f;  // Nivel 3, velocidad 3
+                    break;
+                case 3:
+                    velocidadRotacion = 5f;  // Nivel 2, velocidad 2
+                    break;
+                case 4:
+                    velocidadRotacion = 6f;  // Nivel 2, velocidad 2
+                    break;
+                case 5:
+                    velocidadRotacion = 7f;  // Nivel 2, velocidad 2
+                    break;
+            }
         }
+
 
         // Update is called once per frame
         void Update()
         {
-            
+          
 
             if (haveBall)
             {
                 m_Ball.GetComponent<Rigidbody>().isKinematic = true;
                 m_Ball.transform.position = BallPoint.position;
-                ArrowBase.localRotation = Quaternion.Euler(0, 0, 55*Mathf.Sin(Time.time));
-               
+                // Aquí se aplica la rotación con velocidad dinámica
+                ArrowBase.localRotation = Quaternion.Euler(0, 0, 55 * Mathf.Sin(Time.time * velocidadRotacion));
             }
             else
             {
-                
-                if (m_Ball.transform.position.y< transform.position.y)
+                if (m_Ball.transform.position.y < transform.position.y)
                 {
                     m_Particles[0].Play();
                     m_Particles[1].Play();
@@ -52,15 +84,14 @@ namespace JSG.Project_Pinball.Gameplay
 
             bool hit = false;
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    hit = true;
-                }
-                if (Input.touchCount > 0)
-                {
-                    hit = true;
-                }
-            
+            if (Input.GetMouseButtonDown(0))
+            {
+                hit = true;
+            }
+            if (Input.touchCount > 0)
+            {
+                hit = true;
+            }
 
             if (hit)
             {
@@ -74,51 +105,19 @@ namespace JSG.Project_Pinball.Gameplay
                         haveBall = false;
 
                         GameObject obj = Instantiate(m_ShootParticlePrefab);
-                        obj.transform.position =BallPoint.position;
+                        obj.transform.position = BallPoint.position;
                         obj.transform.forward = ArrowBase.rotation * Vector3.up;
                         Destroy(obj, 4);
 
                         m_Particles[0].Stop();
                         m_Particles[1].Stop();
 
-                        CameraControl.Current.StartShake(.4f, .2f);
+                        CameraControl.Current.StartShake(0.4f, 0.2f);
                     }
                 }
-
-                //Collider[] colliders = Physics.OverlapSphere(transform.position, 3f);
-                //foreach (Collider c in colliders)
-                //{
-                //    if (c.gameObject.GetComponent<Rigidbody>() != null)
-                //    {
-                //        Vector3 dir = c.gameObject.transform.position - transform.position;
-                //        dir.z = 0;
-                //        if (dir.magnitude <= 3)
-                //        {
-                //            dir.Normalize();
-                //            c.gameObject.GetComponent<Rigidbody>().velocity = 50 * dir;
-                //        }
-                //        //break;
-                //    }
-                //}
             }
 
-            //if (!Won)
-            //{
-                //if (CollectedCount > 150)
-                //{
-                //    Won = true;
-                //    foreach(SmallBall ball in m_SmallBalls)
-                //    {
-                //        //ball.GetComponent<Rigidbody>().isKinematic = true;
-                //        if (!ball.m_Collected && ball.transform.position.y > transform.position.y)
-                //        {
-                //            ball.Remove();
-                //        }
-                //    }
-                //}
-            //}
-
-            //print("Collected : " + m_CollectedSmallBalls.Count.ToString());
+            // Aquí puedes agregar más lógica si es necesario
         }
 
         void OnDrawGizmos()

@@ -9,7 +9,7 @@ namespace JSG.Project_Pinball.ScriptableObjects
     {
         public int Coin;
         public int LevelCoin;
-        public int LevelNumber;
+        public int LevelNumber ;
         public int UnlockedLevelNumber;
 
         [HideInInspector]
@@ -33,7 +33,7 @@ namespace JSG.Project_Pinball.ScriptableObjects
         {
             Coin = PlayerPrefs.GetInt("Coin", 0);
 
-            LevelNumber = PlayerPrefs.GetInt("LevelNumber", 0);
+            LevelNumber = PlayerPrefs.GetInt("LevelNumber", 1);
             UnlockedLevelNumber = PlayerPrefs.GetInt("UnlockedLevelNumber", 0);
             if (UnlockedLevelNumber < LevelNumber)
             {

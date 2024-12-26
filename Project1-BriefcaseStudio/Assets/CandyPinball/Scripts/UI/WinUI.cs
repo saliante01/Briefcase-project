@@ -26,10 +26,11 @@ namespace JSG.Project_Pinball.UI
         [SerializeField, Space]
         private DataStorage m_DataStorage;
 
+        public int countClearDataStorage=0;
 
         void Start()
         {
-
+            
         }
 
         void Update()
@@ -37,10 +38,13 @@ namespace JSG.Project_Pinball.UI
             m_Level.text = "Level " + (m_DataStorage.LevelNumber + 1).ToString();
 
             m_CoinAmount.text = (m_DataStorage.Coin).ToString();
+
+            if (m_DataStorage.LevelNumber > 4) {
+                Debug.Log(m_DataStorage.LevelNumber);
+                SceneManager.LoadScene(1);
+                m_DataStorage.LevelNumber = 1;
+            }
         }
-
-
-
         public void Continue()
         {
             if (m_DataStorage.CheckInternet())
@@ -62,6 +66,7 @@ namespace JSG.Project_Pinball.UI
             m_DataStorage.SaveData();
             // Carga la escena correspondiente sin modificar el LevelNumber
             SceneManager.LoadScene(randomSceneIndex + 1);  // Se suma 1 porque la escena es indexada de 1 en adelante (por ejemplo: "Scene 1", "Scene 2")
+
         }
 
 

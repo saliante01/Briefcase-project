@@ -29,7 +29,6 @@ namespace JSG.Project_Pinball.ScriptableObjects
             PlayerPrefs.SetInt("m_NewUnlock", m_NewUnlock);
             PlayerPrefs.Save();
         }
-
         public void LoadData()
         {
             Coin = PlayerPrefs.GetInt("Coin", 0);

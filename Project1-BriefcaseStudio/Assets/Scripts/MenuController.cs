@@ -5,13 +5,14 @@ using UnityEngine.UI;  // Necesario para trabajar con los botones
 
 public class MenuController : MonoBehaviour
 {
-    private DataStorage dataStorage;
+    public DataStorage dataStorage;
     // Función para cargar la escena llamada "1"
     public void PlayGame()
     {
         // Cargar la escena "1"
+        dataStorage.LevelNumber = 1;
         SceneManager.LoadScene("1");
-
+        
     }
 
     // Función para salir del juego

@@ -11,6 +11,7 @@ namespace JSG.Project_Pinball.ScriptableObjects
         public int LevelCoin;
         public int LevelNumber ;
         public int UnlockedLevelNumber;
+        public int Shots_available;
 
         [HideInInspector]
         public int m_UnlockCounter = 0;
@@ -20,6 +21,8 @@ namespace JSG.Project_Pinball.ScriptableObjects
         public int[] m_UnlockLevels;
         public int m_TotalLevelCount = 36;
 
+
+
         public void SaveData()
         {
             PlayerPrefs.SetInt("Coin", Coin);
@@ -27,12 +30,13 @@ namespace JSG.Project_Pinball.ScriptableObjects
             PlayerPrefs.SetInt("UnlockedLevelNumber", UnlockedLevelNumber);
             PlayerPrefs.SetInt("m_UnlockCounter", m_UnlockCounter);
             PlayerPrefs.SetInt("m_NewUnlock", m_NewUnlock);
+            PlayerPrefs.SetInt("Shots_available", Shots_available);
             PlayerPrefs.Save();
         }
         public void LoadData()
         {
             Coin = PlayerPrefs.GetInt("Coin", 0);
-
+            LevelNumber = PlayerPrefs.GetInt("Shots_available", 0);
             LevelNumber = PlayerPrefs.GetInt("LevelNumber", 1);
             UnlockedLevelNumber = PlayerPrefs.GetInt("UnlockedLevelNumber", 0);
             if (UnlockedLevelNumber < LevelNumber)

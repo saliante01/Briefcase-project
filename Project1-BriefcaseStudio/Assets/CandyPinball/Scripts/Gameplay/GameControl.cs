@@ -110,19 +110,34 @@ namespace JSG.Project_Pinball.Gameplay
 
             //GameAnalyticsControl.m_Current.LogLevelCompleteEvent(10);
             CameraControl.Current.m_State = CameraControl.State_Win;
-
             //show ui
             m_State = State_End;
             State_Timer = 0;
             UIControl.Current.m_InGameUI.SetActive(false);
             UIControl.Current.m_WinUI.SetActive(true);
-
             Pusher.m_Current.gameObject.SetActive(false);
             m_MainBall.SetActive(false);
             //m_Structure.SetActive(false);
             //m_Level.SetActive(false);
         }
 
+
+        public void HandleLoss()
+        {
+
+
+            //GameAnalyticsControl.m_Current.LogLevelCompleteEvent(10);
+            CameraControl.Current.m_State = CameraControl.State_Win;
+            //show ui
+            m_State = State_End;
+            State_Timer = 0;
+            UIControl.Current.m_InGameUI.SetActive(false);
+            UIControl.Current.m_LoseUI.SetActive(true);
+            Pusher.m_Current.gameObject.SetActive(false);
+            m_MainBall.SetActive(false);
+            //m_Structure.SetActive(false);
+            //m_Level.SetActive(false);
+        }
 
 
 

@@ -1,14 +1,17 @@
+using JSG.Project_Pinball.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // Necesario para cargar escenas
 using UnityEngine.UI;  // Necesario para trabajar con los botones
 
 public class MenuController : MonoBehaviour
 {
+    private DataStorage dataStorage;
     // Función para cargar la escena llamada "1"
     public void PlayGame()
     {
         // Cargar la escena "1"
         SceneManager.LoadScene("1");
+
     }
 
     // Función para salir del juego

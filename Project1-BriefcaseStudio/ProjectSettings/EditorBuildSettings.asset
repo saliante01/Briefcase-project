@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: db04e889b0811d14c98634117a08ca8e
+  - enabled: 1
     path: Assets/CandyPinball/Scenes/1.unity
     guid: 7646558c7e6d84641a4403e7f2ca69d7
   - enabled: 1

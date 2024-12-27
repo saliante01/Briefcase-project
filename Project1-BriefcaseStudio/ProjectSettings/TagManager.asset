@@ -22,6 +22,7 @@ TagManager:
   - SlideStart
   - SlideEnd
   - Shooter
+  - smallball
   layers:
   - Default
   - TransparentFX

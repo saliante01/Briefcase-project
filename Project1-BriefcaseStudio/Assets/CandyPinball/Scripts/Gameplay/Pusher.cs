@@ -23,6 +23,11 @@ namespace JSG.Project_Pinball.Gameplay
         public float velocidadRotacion;  // Controla la velocidad de la rotación
 
         // Start is called before the first frame update
+
+        private void Awake()
+        {
+            m_Current = this;
+        }
         void Start()
         {
             if (m_DataStorage == null)

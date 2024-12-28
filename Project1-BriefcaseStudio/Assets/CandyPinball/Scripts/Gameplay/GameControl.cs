@@ -80,9 +80,6 @@ namespace JSG.Project_Pinball.Gameplay
                         HandleWin();
                     }
 
-                    //
-
-
                     break;
                 case State_Win:
                     CameraControl.Current.m_State = CameraControl.State_Win;

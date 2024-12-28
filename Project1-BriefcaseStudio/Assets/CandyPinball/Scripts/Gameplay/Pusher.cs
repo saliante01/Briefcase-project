@@ -22,14 +22,21 @@ namespace JSG.Project_Pinball.Gameplay
 
         public float velocidadRotacion;  // Controla la velocidad de la rotación
 
+        public float shotavailable;
+       
         // Start is called before the first frame update
 
         private void Awake()
         {
             m_Current = this;
+
+
         }
         void Start()
         {
+
+            shotavailable = m_DataStorage.Shots_available;
+
             if (m_DataStorage == null)
             {
                 Debug.LogError("m_DataStorage no está asignado.");
@@ -68,13 +75,13 @@ namespace JSG.Project_Pinball.Gameplay
         // Update is called once per frame
         void Update()
         {
-          
+
 
             if (haveBall)
             {
                 m_Ball.GetComponent<Rigidbody>().isKinematic = true;
                 m_Ball.transform.position = BallPoint.position;
-                // Aquí se aplica la rotación con velocidad dinámica
+                
                 ArrowBase.localRotation = Quaternion.Euler(0, 0, 55 * Mathf.Sin(Time.time * velocidadRotacion));
             }
             else
@@ -84,7 +91,10 @@ namespace JSG.Project_Pinball.Gameplay
                     m_Particles[0].Play();
                     m_Particles[1].Play();
                     haveBall = true;
+                   
                 }
+
+
             }
 
             bool hit = false;
@@ -98,7 +108,7 @@ namespace JSG.Project_Pinball.Gameplay
                 hit = true;
             }
 
-            if (hit)
+            if (hit && shotavailable!=0)
             {
                 if (GameControl.m_Current.m_State == GameControl.State_Gameplay)
                 {
@@ -108,7 +118,7 @@ namespace JSG.Project_Pinball.Gameplay
                         m_Ball.GetComponent<Rigidbody>().velocity = 50 * (ArrowBase.rotation * Vector3.up);
                         m_Ball.GetComponent<Rigidbody>().angularVelocity = new Vector3(100, 0, 200);
                         haveBall = false;
-
+                        shotavailable --;
                         GameObject obj = Instantiate(m_ShootParticlePrefab);
                         obj.transform.position = BallPoint.position;
                         obj.transform.forward = ArrowBase.rotation * Vector3.up;
@@ -118,6 +128,7 @@ namespace JSG.Project_Pinball.Gameplay
                         m_Particles[1].Stop();
 
                         CameraControl.Current.StartShake(0.4f, 0.2f);
+
                     }
                 }
             }

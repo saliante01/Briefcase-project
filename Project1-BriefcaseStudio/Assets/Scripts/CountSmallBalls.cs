@@ -7,12 +7,17 @@ public class CountSmallBalls : MonoBehaviour
     private GameObject[] smallBalls;
 
     [SerializeField]
-    private int smallBallCount;
+    public int smallBallCount;
     [SerializeField]
-    private bool hasSpawnedSmallBalls = false; // Bandera para verificar si las small balls han aparecido
+    public bool hasSpawnedSmallBalls = false; // Bandera para verificar si las small balls han aparecido
 
     public GameControl gameControl; // Referencia a la clase GameControl
 
+    public Pusher pusherscript;
+
+    public float cantidadrestante;
+
+    public GameObject losspanel;
     void Start()
     {
         smallBallCount = smallBalls.Length;
@@ -40,7 +45,7 @@ public class CountSmallBalls : MonoBehaviour
             if (smallBalls.Length > 0)
             {
                 hasSpawnedSmallBalls = true;
-                Debug.Log("Las Small Balls han aparecido.");
+                Debug.Log("Las Small Balls han aparecido.NO REAL");
             }
         }
 
@@ -49,7 +54,7 @@ public class CountSmallBalls : MonoBehaviour
         {
             smallBalls = GameObject.FindGameObjectsWithTag("smallball");
             smallBallCount = smallBalls.Length;
-
+            cantidadrestante = gameControl.NeededBalls - gameControl.CollectedCount;
             // Restamos el valor de 'colectedCount' de 'smallBallCount' en cada actualización
             if (gameControl != null)
             {
@@ -61,12 +66,15 @@ public class CountSmallBalls : MonoBehaviour
             }
 
             // Verifica si el conteo llega a 0 después de que las small balls han aparecido
-            if (smallBallCount <= 0)
+            if (smallBallCount <= 0 && pusherscript.shotavailable==0 && cantidadrestante!=0)
             {
                 // Realiza alguna acción cuando el número de smallBalls llegue a 0
-                Debug.Log("¡Las Small Balls han desaparecido!");
+                Debug.Log("FALLO ");
                 // Puedes agregar más acciones aquí si lo necesitas
+
+                losspanel.SetActive(true);
             }
+
         }
     }
 }

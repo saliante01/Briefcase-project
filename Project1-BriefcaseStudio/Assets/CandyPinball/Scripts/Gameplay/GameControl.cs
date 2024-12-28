@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using JSG.Project_Pinball.UI;
 using JSG.Project_Pinball.ScriptableObjects;
+using TMPro;
 
 namespace JSG.Project_Pinball.Gameplay
 {
@@ -38,9 +39,15 @@ namespace JSG.Project_Pinball.Gameplay
         public GameObject m_MainBall;
         public GameObject m_Structure;
         public GameObject m_Level;
-
+        public Pusher m_Pusher;
         public GameObject m_CollectParticle;
 
+        // Referencias a los objetos TextMeshPro
+        public TextMeshProUGUI collectedText;
+        public TextMeshProUGUI neededText;
+        public TextMeshProUGUI shotavailable;
+
+       
         void Awake()
         {
             m_Current = this;
@@ -66,6 +73,16 @@ namespace JSG.Project_Pinball.Gameplay
             //    m_EnemyGroupCounter++;
             //    SpawnEnemyPawns();
             //}
+
+            if (collectedText != null && neededText != null && shotavailable!=null)
+            {
+                collectedText.text = "Puntaje Obtenido: " + CollectedCount.ToString();
+                neededText.text = "Puntaje necesario: " + NeededBalls.ToString();
+                shotavailable.text = "Tiros disponibles" + m_Pusher.shotavailable.ToString();
+            }
+
+
+
 
             switch (m_State)
             {

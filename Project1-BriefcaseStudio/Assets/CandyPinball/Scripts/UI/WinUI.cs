@@ -34,7 +34,7 @@ namespace JSG.Project_Pinball.UI
 
         void Update()
         {
-            m_Level.text = "Level " + (m_DataStorage.LevelNumber).ToString();
+            m_Level.text = "Nivel " + (m_DataStorage.LevelNumber).ToString();
 
             m_CoinAmount.text = (m_DataStorage.Coin).ToString();
         }

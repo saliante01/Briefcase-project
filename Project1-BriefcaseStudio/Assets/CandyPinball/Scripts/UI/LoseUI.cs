@@ -15,29 +15,19 @@ namespace JSG.Project_Pinball.UI
         [SerializeField]
         private Button m_Skip;
 
-        [SerializeField]
-        private Text m_CoinAmount;
-        [SerializeField]
-        private Text m_Level;
-
-        [SerializeField]
-        private Image m_Player;
-
+ 
         [SerializeField]
         private DataStorage m_DataStorage;
 
         void Start()
         {
-            m_CoinAmount.text = m_DataStorage.Coin.ToString();
+
         }
 
         void Update()
         {
 
-                m_Level.text = "Level " + (m_DataStorage.LevelNumber + 1).ToString();
-            
 
-            m_CoinAmount.text = (m_DataStorage.Coin).ToString();
         }
 
 

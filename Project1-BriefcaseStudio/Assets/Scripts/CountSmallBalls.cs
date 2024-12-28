@@ -15,9 +15,8 @@ public class CountSmallBalls : MonoBehaviour
 
     public Pusher pusherscript;
 
-    public float cantidadrestante;
 
-    public GameObject losspanel;
+
     void Start()
     {
         smallBallCount = smallBalls.Length;
@@ -54,7 +53,7 @@ public class CountSmallBalls : MonoBehaviour
         {
             smallBalls = GameObject.FindGameObjectsWithTag("smallball");
             smallBallCount = smallBalls.Length;
-            cantidadrestante = gameControl.NeededBalls - gameControl.CollectedCount;
+           
             // Restamos el valor de 'colectedCount' de 'smallBallCount' en cada actualización
             if (gameControl != null)
             {
@@ -63,16 +62,6 @@ public class CountSmallBalls : MonoBehaviour
             else
             {
                 Debug.LogWarning("El objeto GameControl no está asignado. No se puede restar el 'CollectedCount'.");
-            }
-
-            // Verifica si el conteo llega a 0 después de que las small balls han aparecido
-            if (smallBallCount <= 0 && pusherscript.shotavailable==0 && cantidadrestante!=0)
-            {
-                // Realiza alguna acción cuando el número de smallBalls llegue a 0
-                Debug.Log("FALLO ");
-                // Puedes agregar más acciones aquí si lo necesitas
-
-                losspanel.SetActive(true);
             }
 
         }

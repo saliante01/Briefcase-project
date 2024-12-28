@@ -23,7 +23,13 @@ namespace JSG.Project_Pinball.Gameplay
         public float velocidadRotacion;  // Controla la velocidad de la rotación
 
         public float shotavailable;
-       
+
+        public float presiones;
+
+        public CountSmallBalls countsmallballs;
+        private float resta;
+
+        public GameControl gamecontrol;
         // Start is called before the first frame update
 
         private void Awake()
@@ -36,7 +42,8 @@ namespace JSG.Project_Pinball.Gameplay
         {
 
             shotavailable = m_DataStorage.Shots_available;
-
+            presiones = m_DataStorage.Shots_available;
+           
             if (m_DataStorage == null)
             {
                 Debug.LogError("m_DataStorage no está asignado.");
@@ -76,7 +83,7 @@ namespace JSG.Project_Pinball.Gameplay
         void Update()
         {
 
-
+            resta = gamecontrol.NeededBalls - gamecontrol.CollectedCount;
             if (haveBall)
             {
                 m_Ball.GetComponent<Rigidbody>().isKinematic = true;
@@ -133,6 +140,17 @@ namespace JSG.Project_Pinball.Gameplay
                 }
             }
 
+
+            if (shotavailable == 0 && haveBall && countsmallballs.smallBallCount==0 && resta!=0) {
+                
+                StartCoroutine(ShowLostMessage());
+
+                
+
+            }
+
+
+
             // Aquí puedes agregar más lógica si es necesario
         }
 
@@ -141,5 +159,16 @@ namespace JSG.Project_Pinball.Gameplay
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(transform.position, 3);
         }
+
+        private IEnumerator ShowLostMessage()
+        {
+            // Espera 4 segundos
+            yield return new WaitForSeconds(3f);
+
+            // Se ejecuta después de los 4 segundos
+            Debug.Log("perdiste");
+            GameControl.m_Current.HandleLoss();
+        }
+
     }
 }

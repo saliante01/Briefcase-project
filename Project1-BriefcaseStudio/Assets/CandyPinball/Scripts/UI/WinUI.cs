@@ -69,7 +69,7 @@ namespace JSG.Project_Pinball.UI
 
                 m_DataStorage.SaveData();
 
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Resume");
 
             }
 

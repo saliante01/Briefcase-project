@@ -23,6 +23,9 @@ public class ShotsAvailable : MonoBehaviour
             case 3:
                 datastorage.Shots_available = 3;
                 break;
+            case 4:
+                datastorage.Shots_available = 3;
+                break;
             default:
                 Debug.LogWarning("Escena no configurada, usando valor por defecto de Shots_available.");
                 datastorage.Shots_available = 0; // Valor por defecto si no está configurado

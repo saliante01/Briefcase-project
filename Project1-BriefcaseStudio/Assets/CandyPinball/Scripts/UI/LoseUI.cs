@@ -47,8 +47,8 @@ namespace JSG.Project_Pinball.UI
             //SoundGallery.PlaySound("Click");
             //TapsellPlusControl.MainTapsellPlusControl.RequestIntersetialBannerAd();
             //YodaMainControl.MainYodoControl.ShowIntersetial();
-           // UIControl.Current.TransitionOut();
-            Application.Quit();
+            // UIControl.Current.TransitionOut();
+            SceneManager.LoadScene("menu");
             //GameControl.Current.RestartLevel();
 
 

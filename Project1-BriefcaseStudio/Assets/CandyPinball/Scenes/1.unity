@@ -1355,7 +1355,7 @@ MonoBehaviour:
   State_Timer: 0
   m_SmallBalls: []
   m_CollectedSmallBalls: []
-  NeededBalls: 30
+  NeededBalls: 10
   CollectedCount: 0
   Won: 0
   m_MainBall: {fileID: 151084790}
@@ -8456,6 +8456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Multiplier_x5
       objectReference: {fileID: 0}
+    - target: {fileID: 3928074451848957060, guid: cf8624338ebdfcc449f2a19cd460bdc8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 07a24faf25df995438ae1545973bd5c7, type: 2}
     - target: {fileID: 7769143727618647449, guid: cf8624338ebdfcc449f2a19cd460bdc8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14242,7 +14247,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b2b76fbeac3be64e8c326d01335add7, type: 2}
+  - {fileID: 2100000, guid: 07a24faf25df995438ae1545973bd5c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14316,7 +14321,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b2b76fbeac3be64e8c326d01335add7, type: 2}
+  - {fileID: 2100000, guid: 07a24faf25df995438ae1545973bd5c7, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -15332,7 +15337,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16d6ab9410541434ba3c2d31774b47c7, type: 2}
+  - {fileID: 2100000, guid: 07a24faf25df995438ae1545973bd5c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15426,7 +15431,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16d6ab9410541434ba3c2d31774b47c7, type: 2}
+  - {fileID: 2100000, guid: 07a24faf25df995438ae1545973bd5c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

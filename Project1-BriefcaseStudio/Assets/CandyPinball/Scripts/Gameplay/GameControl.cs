@@ -78,7 +78,7 @@ namespace JSG.Project_Pinball.Gameplay
             {
                 collectedText.text = "Puntaje Obtenido: " + CollectedCount.ToString();
                 neededText.text = "Puntaje necesario: " + NeededBalls.ToString();
-                shotavailable.text = "Tiros disponibles" + m_Pusher.shotavailable.ToString();
+                shotavailable.text = "Tiros disponibles: " + m_Pusher.shotavailable.ToString();
             }
 
 

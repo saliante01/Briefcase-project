@@ -23,6 +23,7 @@ TagManager:
   - SlideEnd
   - Shooter
   - smallball
+  - background
   layers:
   - Default
   - TransparentFX
@@ -62,4 +63,7 @@ TagManager:
     locked: 0
   - name: UIParticle
     uniqueID: 213768529
+    locked: 0
+  - name: Background
+    uniqueID: 3737623391
     locked: 0

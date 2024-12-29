@@ -163,7 +163,7 @@ namespace JSG.Project_Pinball.Gameplay
         private IEnumerator ShowLostMessage()
         {
             // Espera 4 segundos
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
 
             // Se ejecuta después de los 4 segundos
             Debug.Log("perdiste");
